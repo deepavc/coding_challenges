@@ -1,0 +1,39 @@
+public class Test
+{
+	public static void main(String[] args){
+		//System.out.println("hi");
+		int[] a = {1,5,2,5,2,6,1};
+		int n = a.length;
+		//System.out.println("n="+n);
+		int key = 0;
+		int j = 0;
+		for(int i = 1; i <= n-1; i++){
+			//System.out.println("i="+i);
+			key=a[i];
+			j = i;
+			while((a[j-1]>a[j])&&(j>0)){
+				//System.out.println("j="+j);
+				a[j]=a[j-1];
+				a[j-1]=key;
+				j--;
+			}
+		}
+		//for(int jj=0;jj<n;jj++)
+			//System.out.println(a[jj]);
+			
+		int ii=0;
+		int culprit =a[n-1];
+		for(ii=0;ii<n-1;ii=ii+2){
+			if(a[ii]!=a[ii+1]){
+				culprit= a[ii];
+				
+			}
+		}
+		System.out.println("culprit="+culprit);
+		/*if(culprit==0){
+			System.out.println("culprit="+culprit);
+		}*/
+			
+	}
+	
+}
