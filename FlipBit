@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class FlipBit {
+	// System.out.println();
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner s = new Scanner(System.in);
+
+		long tc = s.nextLong();
+		for (int p = 0; p < tc; p++) {
+
+			long deci = s.nextLong();
+			long div = deci;
+			StringBuffer buf = new StringBuffer();
+			// converting decimal to binary
+			
+			
+				while (div != 1 && div !=0 ) {
+					buf = buf.append(div % 2);
+					div = div / 2;
+				}
+				if (div == 1 || div == 0){
+					buf = buf.append(div);
+				}
+			 //System.out.println(buf+":"+buf.length());2147483647
+
+			// Representing binary as a 32-bit binary String
+			while (buf.length() < 32) {
+				buf.append(0);
+			}
+			buf = buf.reverse();
+			// System.out.println(buf.reverse()+":"+buf.length());
+			// System.out.println(buf+":"+buf.length());
+
+			// System.out.println("flipping..");
+
+			// Flipping the bits
+			for (int i = 0; i < 32; i++) {
+				// System.out.println(buf.charAt(i)+":"+ (buf.charAt(i) ==
+				// '0'));
+				if (buf.charAt(i) == '0') {
+					buf.setCharAt(i, '1');
+				} else {
+					buf.setCharAt(i, '0');
+				}
+				// System.out.println(buf.charAt(i));
+				// System.out.println(buf+":"+buf.length());
+				// System.out.println("---");
+			}
+			// System.out.println(buf+":"+buf.length());
+			long sum = 0;
+			int pow = 0;
+
+			// converting binary to decimal
+			for (int j = 32; j > 0; j--) {
+				int index = j - 1;
+
+				// int bin = 2;
+				// System.out.println(sum +":"+ index +":"+ (long)Math.pow(2,
+				// index));
+				if (buf.charAt(index) == '1') {
+					sum = sum + (long) Math.pow(2, pow);
+				} else {
+					sum = sum + 0;
+				}
+
+				// System.out.println("-->"+index+":"+buf.charAt(index)+":"+(long)Math.pow(2,
+				// pow)+":"+sum);
+				pow++;
+			}
+			System.out.println(sum);
+		}
+	}
+
+}
